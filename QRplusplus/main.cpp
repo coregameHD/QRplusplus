@@ -3,8 +3,8 @@
 
 int main(int argc, char *argv[])
 {
-	QApplication a(argc, argv);
+	QApplication apps(argc, argv);
 	QRplusplus w;
 	w.show();
-	return a.exec();
+	return apps.exec();
 }

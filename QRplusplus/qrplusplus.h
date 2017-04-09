@@ -14,6 +14,9 @@ public:
 
 private:
 	Ui::QRplusplusClass ui;
+	private slots:
+	void exitapp();
+	void donedialog();
 };
 
 #endif // QRPLUSPLUS_H
