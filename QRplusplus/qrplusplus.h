@@ -15,7 +15,7 @@ public:
 
 private:
 	Ui::QRplusplusClass ui;
-	int marginSize() { return ui.spinBox_marginsize->value(); }
+	int borderSize() { return ui.spinBox_borderSize->value(); }
 	std::string getColor();
 
 	private slots:

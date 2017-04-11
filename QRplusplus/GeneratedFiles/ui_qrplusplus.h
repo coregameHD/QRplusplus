@@ -54,7 +54,7 @@ public:
     QLabel *label_5;
     QSpinBox *spinBox_pixelsize;
     QComboBox *comboBox_errorlvl;
-    QSpinBox *spinBox_marginsize;
+    QSpinBox *spinBox_borderSize;
     QComboBox *comboBox_color;
     QLabel *label_3;
     QLabel *label_2;
@@ -157,13 +157,13 @@ public:
 
         gridLayout->addWidget(comboBox_errorlvl, 3, 1, 1, 1);
 
-        spinBox_marginsize = new QSpinBox(gridLayoutWidget);
-        spinBox_marginsize->setObjectName(QStringLiteral("spinBox_marginsize"));
-        spinBox_marginsize->setMinimum(4);
-        spinBox_marginsize->setMaximum(40);
-        spinBox_marginsize->setValue(4);
+        spinBox_borderSize = new QSpinBox(gridLayoutWidget);
+        spinBox_borderSize->setObjectName(QStringLiteral("spinBox_borderSize"));
+        spinBox_borderSize->setMinimum(4);
+        spinBox_borderSize->setMaximum(40);
+        spinBox_borderSize->setValue(4);
 
-        gridLayout->addWidget(spinBox_marginsize, 3, 2, 1, 1);
+        gridLayout->addWidget(spinBox_borderSize, 3, 2, 1, 1);
 
         comboBox_color = new QComboBox(gridLayoutWidget);
         comboBox_color->setObjectName(QStringLiteral("comboBox_color"));
@@ -213,7 +213,7 @@ public:
         label_5->setBuddy(comboBox_color);
         label_3->setBuddy(comboBox_errorlvl);
         label_2->setBuddy(spinBox_pixelsize);
-        label_4->setBuddy(spinBox_marginsize);
+        label_4->setBuddy(spinBox_borderSize);
 #endif // QT_NO_SHORTCUT
 
         menuBar->addAction(menuFile->menuAction());
@@ -270,7 +270,7 @@ public:
         );
         label_3->setText(QApplication::translate("QRplusplusClass", "Error Correction:", Q_NULLPTR));
         label_2->setText(QApplication::translate("QRplusplusClass", "Pixel Size:", Q_NULLPTR));
-        label_4->setText(QApplication::translate("QRplusplusClass", "Margin Size:", Q_NULLPTR));
+        label_4->setText(QApplication::translate("QRplusplusClass", "Border Size:", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
         generateButton->setToolTip(QApplication::translate("QRplusplusClass", "Generate Button", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP

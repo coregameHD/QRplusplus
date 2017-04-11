@@ -74,6 +74,7 @@ void QRplusplus::enableButton() {
 */
 void QRplusplus::doneDialog() {
 	QMessageBox msgBox;
+	msgBox.setIcon(QMessageBox::Information);
 	QString msg = "Done!!\n\nText: \n" + ui.userTextInput->toPlainText();
 	msgBox.setText(msg);
 	msgBox.exec();
@@ -84,7 +85,8 @@ void QRplusplus::doneDialog() {
 */
 void QRplusplus::aboutDialog() {
 	QMessageBox msgBox;
-	QString msg = "QRplusplus : QR Code Generator\nBuild with love by Coregame";
+	msgBox.setIcon(QMessageBox::Information);
+	QString msg = "QRplusplus : QR Code Generator\n\nBuild with love by Coregame";
 	msgBox.setText(msg);
 	msgBox.exec();
 }
@@ -135,7 +137,7 @@ void QRplusplus::generateQR() {
 	// Save SVG XML into file
 	std::ofstream myfile;
 	myfile.open("qrcode_output.svg");
-	myfile << qr.toSvgString(QRplusplus::marginSize(), QRplusplus::getColor()) << std::endl;
+	myfile << qr.toSvgString(QRplusplus::borderSize(), QRplusplus::getColor()) << std::endl;
 	myfile.close();
 
 	// Display doneDialog
