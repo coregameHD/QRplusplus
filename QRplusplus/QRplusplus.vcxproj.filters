@@ -50,6 +50,15 @@
     <ClCompile Include="GeneratedFiles\qrc_qrplusplus.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
+    <ClCompile Include="BitBuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="QrCode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="QrSegment.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="qrplusplus.h">
@@ -65,6 +74,15 @@
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_qrplusplus.h">
       <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BitBuffer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="QrCode.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="QrSegment.hpp">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

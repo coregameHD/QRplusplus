@@ -137,6 +137,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BitBuffer.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_qrplusplus.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
@@ -156,7 +157,9 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="QrCode.cpp" />
     <ClCompile Include="qrplusplus.cpp" />
+    <ClCompile Include="QrSegment.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="qrplusplus.h">
@@ -199,7 +202,10 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BitBuffer.hpp" />
     <ClInclude Include="GeneratedFiles\ui_qrplusplus.h" />
+    <ClInclude Include="QrCode.hpp" />
+    <ClInclude Include="QrSegment.hpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="qrplusplus.qrc">

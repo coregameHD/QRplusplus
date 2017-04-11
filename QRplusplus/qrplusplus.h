@@ -3,6 +3,7 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_qrplusplus.h"
+#include <string>
 
 class QRplusplus : public QMainWindow
 {
@@ -14,9 +15,15 @@ public:
 
 private:
 	Ui::QRplusplusClass ui;
+	int marginSize() { return ui.spinBox_marginsize->value(); }
+	std::string getColor();
+
 	private slots:
-	void exitapp();
-	void donedialog();
+	void exitApp();
+	void doneDialog();
+	void generateQR();
+	void enableButton();
+	void aboutDialog();
 };
 
 #endif // QRPLUSPLUS_H

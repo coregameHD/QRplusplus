@@ -10,6 +10,18 @@
     <height>600</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
+  </property>
   <property name="maximumSize">
    <size>
     <width>800</width>
@@ -38,34 +50,71 @@
     <property name="title">
      <string>Input</string>
     </property>
-    <widget class="QLabel" name="label">
+    <widget class="QWidget" name="verticalLayoutWidget">
      <property name="geometry">
       <rect>
-       <x>30</x>
+       <x>10</x>
        <y>30</y>
-       <width>55</width>
-       <height>16</height>
+       <width>741</width>
+       <height>301</height>
       </rect>
      </property>
-     <property name="text">
-      <string>Text:</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="lineEdit">
-     <property name="geometry">
-      <rect>
-       <x>30</x>
-       <y>60</y>
-       <width>700</width>
-       <height>280</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Insert text here...</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>Text:</string>
+          </property>
+          <property name="buddy">
+           <cstring>userTextInput</cstring>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pasteButton">
+          <property name="text">
+           <string>Paste</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="clearButton">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string>Clear</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QPlainTextEdit" name="userTextInput">
+        <property name="plainText">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>Enter your text to be put into the QR Code...</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </widget>
    <widget class="QGroupBox" name="groupCustomize">
@@ -80,138 +129,200 @@
     <property name="title">
      <string>Customize</string>
     </property>
-    <widget class="QLabel" name="label_2">
+    <widget class="QWidget" name="gridLayoutWidget">
      <property name="geometry">
       <rect>
        <x>20</x>
        <y>30</y>
-       <width>71</width>
-       <height>16</height>
+       <width>561</width>
+       <height>61</height>
       </rect>
      </property>
-     <property name="text">
-      <string>Pixel Size:</string>
-     </property>
-    </widget>
-    <widget class="QSpinBox" name="spinBox_pixelsize">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>60</y>
-       <width>121</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <property name="value">
-      <number>5</number>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_3">
-     <property name="geometry">
-      <rect>
-       <x>160</x>
-       <y>30</y>
-       <width>111</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Error Correction:</string>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboBox_errorcor">
-     <property name="geometry">
-      <rect>
-       <x>160</x>
-       <y>60</y>
-       <width>121</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <item>
-      <property name="text">
-       <string>Low</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Medium</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Quartile</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>High</string>
-      </property>
-     </item>
-    </widget>
-    <widget class="QLabel" name="label_4">
-     <property name="geometry">
-      <rect>
-       <x>300</x>
-       <y>30</y>
-       <width>111</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Margin Size:</string>
-     </property>
-    </widget>
-    <widget class="QSpinBox" name="spinBox_marginsize">
-     <property name="geometry">
-      <rect>
-       <x>300</x>
-       <y>60</y>
-       <width>121</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <property name="value">
-      <number>4</number>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_5">
-     <property name="geometry">
-      <rect>
-       <x>440</x>
-       <y>30</y>
-       <width>111</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Color:</string>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboBox_color">
-     <property name="geometry">
-      <rect>
-       <x>440</x>
-       <y>60</y>
-       <width>121</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <item>
-      <property name="text">
-       <string>Black</string>
-      </property>
-     </item>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="1" column="3">
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>Color:</string>
+        </property>
+        <property name="buddy">
+         <cstring>comboBox_color</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QSpinBox" name="spinBox_pixelsize">
+        <property name="value">
+         <number>5</number>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QComboBox" name="comboBox_errorlvl">
+        <item>
+         <property name="text">
+          <string>Low (Default)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Medium</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Quartile</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>High</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <widget class="QSpinBox" name="spinBox_marginsize">
+        <property name="minimum">
+         <number>4</number>
+        </property>
+        <property name="maximum">
+         <number>40</number>
+        </property>
+        <property name="value">
+         <number>4</number>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="3">
+       <widget class="QComboBox" name="comboBox_color">
+        <item>
+         <property name="text">
+          <string>Black (Default)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Red</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Pink</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Purple</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Deep Purple</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Indigo</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Blue</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Cyan</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Teal</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Green</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Orange</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Deep Orange</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Brown</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Grey</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Error Correction:</string>
+        </property>
+        <property name="buddy">
+         <cstring>comboBox_errorlvl</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Pixel Size:</string>
+        </property>
+        <property name="buddy">
+         <cstring>spinBox_pixelsize</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Margin Size:</string>
+        </property>
+        <property name="buddy">
+         <cstring>spinBox_marginsize</cstring>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </widget>
    <widget class="QPushButton" name="generateButton">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>640</x>
       <y>410</y>
-      <width>141</width>
-      <height>71</height>
+      <width>140</width>
+      <height>70</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="toolTip">
+     <string>Generate Button</string>
+    </property>
+    <property name="whatsThis">
+     <string/>
     </property>
     <property name="text">
      <string>Generate</string>
@@ -222,7 +333,7 @@
      <rect>
       <x>640</x>
       <y>490</y>
-      <width>141</width>
+      <width>140</width>
       <height>28</height>
      </rect>
     </property>
@@ -244,7 +355,7 @@
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="actionOpen"/>
+    <addaction name="actionGenerate"/>
     <addaction name="separator"/>
     <addaction name="actionExit"/>
    </widget>
@@ -257,18 +368,13 @@
    <addaction name="menuFile"/>
    <addaction name="menuAbout"/>
   </widget>
-  <widget class="QToolBar" name="mainToolBar">
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
-  </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <action name="actionOpen">
+  <action name="actionGenerate">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
-    <string>Open</string>
+    <string>Generate</string>
    </property>
   </action>
   <action name="actionExit">
@@ -286,5 +392,38 @@
  <resources>
   <include location="qrplusplus.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>clearButton</sender>
+   <signal>clicked()</signal>
+   <receiver>userTextInput</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>699</x>
+     <y>96</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>705</x>
+     <y>130</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pasteButton</sender>
+   <signal>clicked()</signal>
+   <receiver>userTextInput</receiver>
+   <slot>paste()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>633</x>
+     <y>101</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>633</x>
+     <y>127</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
