@@ -26,6 +26,8 @@ QRplusplus::QRplusplus(QWidget *parent) : QMainWindow(parent)
 	connect(ui.actionGenerate, &QAction::triggered, this, &QRplusplus::generateQR);
 	connect(ui.actionExit, &QAction::triggered, this, &QRplusplus::exitApp);
 	connect(ui.actionAbout, &QAction::triggered, this, &QRplusplus::aboutDialog);
+	connect(ui.actionWebsite, &QAction::triggered, this, &QRplusplus::openWeb);
+	connect(ui.actionGithub, &QAction::triggered, this, &QRplusplus::openGithub);
 
 	// Push Button
 	connect(ui.exitButton, SIGNAL(clicked()), this, SLOT(exitApp()));

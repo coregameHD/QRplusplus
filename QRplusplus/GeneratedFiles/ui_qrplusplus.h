@@ -40,6 +40,8 @@ public:
     QAction *actionExit;
     QAction *actionAbout;
     QAction *actionOpen;
+    QAction *actionWebsite;
+    QAction *actionGithub;
     QWidget *centralWidget;
     QGroupBox *groupInput;
     QWidget *verticalLayoutWidget;
@@ -93,6 +95,10 @@ public:
         actionAbout->setObjectName(QStringLiteral("actionAbout"));
         actionOpen = new QAction(QRplusplusClass);
         actionOpen->setObjectName(QStringLiteral("actionOpen"));
+        actionWebsite = new QAction(QRplusplusClass);
+        actionWebsite->setObjectName(QStringLiteral("actionWebsite"));
+        actionGithub = new QAction(QRplusplusClass);
+        actionGithub->setObjectName(QStringLiteral("actionGithub"));
         centralWidget = new QWidget(QRplusplusClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         groupInput = new QGroupBox(centralWidget);
@@ -244,6 +250,9 @@ public:
         menuFile->addAction(actionGenerate);
         menuFile->addSeparator();
         menuFile->addAction(actionExit);
+        menuAbout->addAction(actionWebsite);
+        menuAbout->addAction(actionGithub);
+        menuAbout->addSeparator();
         menuAbout->addAction(actionAbout);
 
         retranslateUi(QRplusplusClass);
@@ -260,6 +269,8 @@ public:
         actionExit->setText(QApplication::translate("QRplusplusClass", "Exit", Q_NULLPTR));
         actionAbout->setText(QApplication::translate("QRplusplusClass", "About", Q_NULLPTR));
         actionOpen->setText(QApplication::translate("QRplusplusClass", "Open", Q_NULLPTR));
+        actionWebsite->setText(QApplication::translate("QRplusplusClass", "Website", Q_NULLPTR));
+        actionGithub->setText(QApplication::translate("QRplusplusClass", "Github", Q_NULLPTR));
         groupInput->setTitle(QApplication::translate("QRplusplusClass", "Input", Q_NULLPTR));
         label_text->setText(QApplication::translate("QRplusplusClass", "Text:", Q_NULLPTR));
         pasteButton->setText(QApplication::translate("QRplusplusClass", "Paste", Q_NULLPTR));

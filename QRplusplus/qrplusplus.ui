@@ -389,6 +389,9 @@
     <property name="title">
      <string>Help</string>
     </property>
+    <addaction name="actionWebsite"/>
+    <addaction name="actionGithub"/>
+    <addaction name="separator"/>
     <addaction name="actionAbout"/>
    </widget>
    <addaction name="menuFile"/>
@@ -416,6 +419,16 @@
   <action name="actionOpen">
    <property name="text">
     <string>Open</string>
+   </property>
+  </action>
+  <action name="actionWebsite">
+   <property name="text">
+    <string>Website</string>
+   </property>
+  </action>
+  <action name="actionGithub">
+   <property name="text">
+    <string>Github</string>
    </property>
   </action>
  </widget>

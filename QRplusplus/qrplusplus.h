@@ -18,6 +18,10 @@ private:
 	std::string fileDirectory;
 	QString dir;
 	int borderSize() { return ui.spinBox_borderSize->value(); }
+	void openWeb() { QDesktopServices::openUrl
+	(QUrl("https://coregame-th.com/", QUrl::TolerantMode));}
+	void openGithub() { QDesktopServices::openUrl
+	(QUrl("https://github.com/coregameHD/QRplusplus", QUrl::TolerantMode));}
 	std::string getColor();
 
 	private slots:
