@@ -18,6 +18,10 @@ QRplusplus::QRplusplus(QWidget *parent) : QMainWindow(parent)
 	//ui.statusBar->setStyleSheet("color: blue");
 	ui.statusBar->showMessage("Text!");
 
+	//File directory
+	dir = QDir::currentPath();
+	ui.lineEdit_fileDirectory->setText(dir);
+
 	// Menu Bar
 	connect(ui.actionGenerate, &QAction::triggered, this, &QRplusplus::generateQR);
 	connect(ui.actionExit, &QAction::triggered, this, &QRplusplus::exitApp);
@@ -27,6 +31,7 @@ QRplusplus::QRplusplus(QWidget *parent) : QMainWindow(parent)
 	connect(ui.exitButton, SIGNAL(clicked()), this, SLOT(exitApp()));
 	connect(ui.userTextInput, SIGNAL(textChanged()), this, SLOT(enableButton()));
 	connect(ui.generateButton, SIGNAL(clicked()), this, SLOT(generateQR()));
+	connect(ui.browseButton, SIGNAL(clicked()), this, SLOT(selectDirectory()));
 
 	// Color Combobox
 	ui.comboBox_color->setItemData(1, QBrush(QColor(244, 67, 54)), Qt::TextColorRole); // Red
@@ -136,10 +141,16 @@ void QRplusplus::generateQR() {
 	
 	// Save SVG XML into file
 	std::ofstream myfile;
-	myfile.open("qrcode_output.svg");
+	myfile.open(dir.toStdString() + "/QRcode_output.svg");
 	myfile << qr.toSvgString(QRplusplus::borderSize(), QRplusplus::getColor()) << std::endl;
 	myfile.close();
 
 	// Display doneDialog
 	QRplusplus::doneDialog();
+}
+
+void QRplusplus::selectDirectory() {
+	dir = QFileDialog::getExistingDirectory(this,
+		tr("Select Directory"), QDir::currentPath());
+	ui.lineEdit_fileDirectory->setText(dir);
 }

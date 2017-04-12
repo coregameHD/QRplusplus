@@ -19,6 +19,7 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
@@ -38,29 +39,34 @@ public:
     QAction *actionGenerate;
     QAction *actionExit;
     QAction *actionAbout;
+    QAction *actionOpen;
     QWidget *centralWidget;
     QGroupBox *groupInput;
     QWidget *verticalLayoutWidget;
-    QVBoxLayout *verticalLayout;
-    QHBoxLayout *horizontalLayout;
-    QLabel *label;
+    QVBoxLayout *inputLayout;
+    QHBoxLayout *textLayout;
+    QLabel *label_text;
     QSpacerItem *horizontalSpacer;
     QPushButton *pasteButton;
     QPushButton *clearButton;
     QPlainTextEdit *userTextInput;
     QGroupBox *groupCustomize;
     QWidget *gridLayoutWidget;
-    QGridLayout *gridLayout;
-    QLabel *label_5;
-    QSpinBox *spinBox_pixelsize;
+    QGridLayout *customizeLayout;
+    QComboBox *comboBox_color;
+    QLabel *label_errorCor;
     QComboBox *comboBox_errorlvl;
     QSpinBox *spinBox_borderSize;
-    QComboBox *comboBox_color;
-    QLabel *label_3;
-    QLabel *label_2;
-    QLabel *label_4;
+    QLabel *label_color;
+    QLabel *label_borderSize;
     QPushButton *generateButton;
     QPushButton *exitButton;
+    QGroupBox *groupBox;
+    QWidget *horizontalLayoutWidget;
+    QHBoxLayout *directoryLayout;
+    QLabel *label_saveto;
+    QLineEdit *lineEdit_fileDirectory;
+    QPushButton *browseButton;
     QMenuBar *menuBar;
     QMenu *menuFile;
     QMenu *menuAbout;
@@ -85,77 +91,78 @@ public:
         actionExit->setObjectName(QStringLiteral("actionExit"));
         actionAbout = new QAction(QRplusplusClass);
         actionAbout->setObjectName(QStringLiteral("actionAbout"));
+        actionOpen = new QAction(QRplusplusClass);
+        actionOpen->setObjectName(QStringLiteral("actionOpen"));
         centralWidget = new QWidget(QRplusplusClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         groupInput = new QGroupBox(centralWidget);
         groupInput->setObjectName(QStringLiteral("groupInput"));
-        groupInput->setGeometry(QRect(20, 20, 760, 360));
+        groupInput->setGeometry(QRect(20, 100, 760, 281));
         groupInput->setMaximumSize(QSize(760, 360));
         verticalLayoutWidget = new QWidget(groupInput);
         verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(10, 30, 741, 301));
-        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
-        verticalLayout->setSpacing(6);
-        verticalLayout->setContentsMargins(11, 11, 11, 11);
-        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setSpacing(6);
-        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        label = new QLabel(verticalLayoutWidget);
-        label->setObjectName(QStringLiteral("label"));
+        verticalLayoutWidget->setGeometry(QRect(10, 30, 741, 231));
+        inputLayout = new QVBoxLayout(verticalLayoutWidget);
+        inputLayout->setSpacing(6);
+        inputLayout->setContentsMargins(11, 11, 11, 11);
+        inputLayout->setObjectName(QStringLiteral("inputLayout"));
+        inputLayout->setContentsMargins(0, 0, 0, 0);
+        textLayout = new QHBoxLayout();
+        textLayout->setSpacing(6);
+        textLayout->setObjectName(QStringLiteral("textLayout"));
+        label_text = new QLabel(verticalLayoutWidget);
+        label_text->setObjectName(QStringLiteral("label_text"));
 
-        horizontalLayout->addWidget(label);
+        textLayout->addWidget(label_text);
 
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        horizontalLayout->addItem(horizontalSpacer);
+        textLayout->addItem(horizontalSpacer);
 
         pasteButton = new QPushButton(verticalLayoutWidget);
         pasteButton->setObjectName(QStringLiteral("pasteButton"));
 
-        horizontalLayout->addWidget(pasteButton);
+        textLayout->addWidget(pasteButton);
 
         clearButton = new QPushButton(verticalLayoutWidget);
         clearButton->setObjectName(QStringLiteral("clearButton"));
         clearButton->setEnabled(false);
 
-        horizontalLayout->addWidget(clearButton);
+        textLayout->addWidget(clearButton);
 
 
-        verticalLayout->addLayout(horizontalLayout);
+        inputLayout->addLayout(textLayout);
 
         userTextInput = new QPlainTextEdit(verticalLayoutWidget);
         userTextInput->setObjectName(QStringLiteral("userTextInput"));
 
-        verticalLayout->addWidget(userTextInput);
+        inputLayout->addWidget(userTextInput);
 
         groupCustomize = new QGroupBox(centralWidget);
         groupCustomize->setObjectName(QStringLiteral("groupCustomize"));
         groupCustomize->setGeometry(QRect(20, 400, 600, 120));
         gridLayoutWidget = new QWidget(groupCustomize);
         gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(20, 30, 561, 61));
-        gridLayout = new QGridLayout(gridLayoutWidget);
-        gridLayout->setSpacing(6);
-        gridLayout->setContentsMargins(11, 11, 11, 11);
-        gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        gridLayout->setContentsMargins(0, 0, 0, 0);
-        label_5 = new QLabel(gridLayoutWidget);
-        label_5->setObjectName(QStringLiteral("label_5"));
+        gridLayoutWidget->setGeometry(QRect(10, 30, 581, 61));
+        customizeLayout = new QGridLayout(gridLayoutWidget);
+        customizeLayout->setSpacing(6);
+        customizeLayout->setContentsMargins(11, 11, 11, 11);
+        customizeLayout->setObjectName(QStringLiteral("customizeLayout"));
+        customizeLayout->setContentsMargins(0, 0, 0, 0);
+        comboBox_color = new QComboBox(gridLayoutWidget);
+        comboBox_color->setObjectName(QStringLiteral("comboBox_color"));
 
-        gridLayout->addWidget(label_5, 1, 3, 1, 1);
+        customizeLayout->addWidget(comboBox_color, 3, 2, 1, 1);
 
-        spinBox_pixelsize = new QSpinBox(gridLayoutWidget);
-        spinBox_pixelsize->setObjectName(QStringLiteral("spinBox_pixelsize"));
-        spinBox_pixelsize->setValue(5);
+        label_errorCor = new QLabel(gridLayoutWidget);
+        label_errorCor->setObjectName(QStringLiteral("label_errorCor"));
 
-        gridLayout->addWidget(spinBox_pixelsize, 3, 0, 1, 1);
+        customizeLayout->addWidget(label_errorCor, 1, 0, 1, 1);
 
         comboBox_errorlvl = new QComboBox(gridLayoutWidget);
         comboBox_errorlvl->setObjectName(QStringLiteral("comboBox_errorlvl"));
 
-        gridLayout->addWidget(comboBox_errorlvl, 3, 1, 1, 1);
+        customizeLayout->addWidget(comboBox_errorlvl, 3, 0, 1, 1);
 
         spinBox_borderSize = new QSpinBox(gridLayoutWidget);
         spinBox_borderSize->setObjectName(QStringLiteral("spinBox_borderSize"));
@@ -163,27 +170,17 @@ public:
         spinBox_borderSize->setMaximum(40);
         spinBox_borderSize->setValue(4);
 
-        gridLayout->addWidget(spinBox_borderSize, 3, 2, 1, 1);
+        customizeLayout->addWidget(spinBox_borderSize, 3, 1, 1, 1);
 
-        comboBox_color = new QComboBox(gridLayoutWidget);
-        comboBox_color->setObjectName(QStringLiteral("comboBox_color"));
+        label_color = new QLabel(gridLayoutWidget);
+        label_color->setObjectName(QStringLiteral("label_color"));
 
-        gridLayout->addWidget(comboBox_color, 3, 3, 1, 1);
+        customizeLayout->addWidget(label_color, 1, 2, 1, 1);
 
-        label_3 = new QLabel(gridLayoutWidget);
-        label_3->setObjectName(QStringLiteral("label_3"));
+        label_borderSize = new QLabel(gridLayoutWidget);
+        label_borderSize->setObjectName(QStringLiteral("label_borderSize"));
 
-        gridLayout->addWidget(label_3, 1, 1, 1, 1);
-
-        label_2 = new QLabel(gridLayoutWidget);
-        label_2->setObjectName(QStringLiteral("label_2"));
-
-        gridLayout->addWidget(label_2, 1, 0, 1, 1);
-
-        label_4 = new QLabel(gridLayoutWidget);
-        label_4->setObjectName(QStringLiteral("label_4"));
-
-        gridLayout->addWidget(label_4, 1, 2, 1, 1);
+        customizeLayout->addWidget(label_borderSize, 1, 1, 1, 1);
 
         generateButton = new QPushButton(centralWidget);
         generateButton->setObjectName(QStringLiteral("generateButton"));
@@ -196,6 +193,32 @@ public:
         exitButton = new QPushButton(centralWidget);
         exitButton->setObjectName(QStringLiteral("exitButton"));
         exitButton->setGeometry(QRect(640, 490, 140, 28));
+        groupBox = new QGroupBox(centralWidget);
+        groupBox->setObjectName(QStringLiteral("groupBox"));
+        groupBox->setGeometry(QRect(20, 20, 761, 61));
+        horizontalLayoutWidget = new QWidget(groupBox);
+        horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
+        horizontalLayoutWidget->setGeometry(QRect(10, 20, 741, 31));
+        directoryLayout = new QHBoxLayout(horizontalLayoutWidget);
+        directoryLayout->setSpacing(6);
+        directoryLayout->setContentsMargins(11, 11, 11, 11);
+        directoryLayout->setObjectName(QStringLiteral("directoryLayout"));
+        directoryLayout->setContentsMargins(0, 0, 0, 0);
+        label_saveto = new QLabel(horizontalLayoutWidget);
+        label_saveto->setObjectName(QStringLiteral("label_saveto"));
+
+        directoryLayout->addWidget(label_saveto);
+
+        lineEdit_fileDirectory = new QLineEdit(horizontalLayoutWidget);
+        lineEdit_fileDirectory->setObjectName(QStringLiteral("lineEdit_fileDirectory"));
+
+        directoryLayout->addWidget(lineEdit_fileDirectory);
+
+        browseButton = new QPushButton(horizontalLayoutWidget);
+        browseButton->setObjectName(QStringLiteral("browseButton"));
+
+        directoryLayout->addWidget(browseButton);
+
         QRplusplusClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(QRplusplusClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -209,15 +232,15 @@ public:
         statusBar->setObjectName(QStringLiteral("statusBar"));
         QRplusplusClass->setStatusBar(statusBar);
 #ifndef QT_NO_SHORTCUT
-        label->setBuddy(userTextInput);
-        label_5->setBuddy(comboBox_color);
-        label_3->setBuddy(comboBox_errorlvl);
-        label_2->setBuddy(spinBox_pixelsize);
-        label_4->setBuddy(spinBox_borderSize);
+        label_text->setBuddy(userTextInput);
+        label_errorCor->setBuddy(comboBox_errorlvl);
+        label_color->setBuddy(comboBox_color);
+        label_borderSize->setBuddy(spinBox_borderSize);
 #endif // QT_NO_SHORTCUT
 
         menuBar->addAction(menuFile->menuAction());
         menuBar->addAction(menuAbout->menuAction());
+        menuFile->addAction(actionOpen);
         menuFile->addAction(actionGenerate);
         menuFile->addSeparator();
         menuFile->addAction(actionExit);
@@ -236,21 +259,14 @@ public:
         actionGenerate->setText(QApplication::translate("QRplusplusClass", "Generate", Q_NULLPTR));
         actionExit->setText(QApplication::translate("QRplusplusClass", "Exit", Q_NULLPTR));
         actionAbout->setText(QApplication::translate("QRplusplusClass", "About", Q_NULLPTR));
+        actionOpen->setText(QApplication::translate("QRplusplusClass", "Open", Q_NULLPTR));
         groupInput->setTitle(QApplication::translate("QRplusplusClass", "Input", Q_NULLPTR));
-        label->setText(QApplication::translate("QRplusplusClass", "Text:", Q_NULLPTR));
+        label_text->setText(QApplication::translate("QRplusplusClass", "Text:", Q_NULLPTR));
         pasteButton->setText(QApplication::translate("QRplusplusClass", "Paste", Q_NULLPTR));
         clearButton->setText(QApplication::translate("QRplusplusClass", "Clear", Q_NULLPTR));
         userTextInput->setPlainText(QString());
         userTextInput->setPlaceholderText(QApplication::translate("QRplusplusClass", "Enter your text to be put into the QR Code...", Q_NULLPTR));
         groupCustomize->setTitle(QApplication::translate("QRplusplusClass", "Customize", Q_NULLPTR));
-        label_5->setText(QApplication::translate("QRplusplusClass", "Color:", Q_NULLPTR));
-        comboBox_errorlvl->clear();
-        comboBox_errorlvl->insertItems(0, QStringList()
-         << QApplication::translate("QRplusplusClass", "Low (Default)", Q_NULLPTR)
-         << QApplication::translate("QRplusplusClass", "Medium", Q_NULLPTR)
-         << QApplication::translate("QRplusplusClass", "Quartile", Q_NULLPTR)
-         << QApplication::translate("QRplusplusClass", "High", Q_NULLPTR)
-        );
         comboBox_color->clear();
         comboBox_color->insertItems(0, QStringList()
          << QApplication::translate("QRplusplusClass", "Black (Default)", Q_NULLPTR)
@@ -268,9 +284,16 @@ public:
          << QApplication::translate("QRplusplusClass", "Brown", Q_NULLPTR)
          << QApplication::translate("QRplusplusClass", "Grey", Q_NULLPTR)
         );
-        label_3->setText(QApplication::translate("QRplusplusClass", "Error Correction:", Q_NULLPTR));
-        label_2->setText(QApplication::translate("QRplusplusClass", "Pixel Size:", Q_NULLPTR));
-        label_4->setText(QApplication::translate("QRplusplusClass", "Border Size:", Q_NULLPTR));
+        label_errorCor->setText(QApplication::translate("QRplusplusClass", "Error Correction:", Q_NULLPTR));
+        comboBox_errorlvl->clear();
+        comboBox_errorlvl->insertItems(0, QStringList()
+         << QApplication::translate("QRplusplusClass", "Low (Default)", Q_NULLPTR)
+         << QApplication::translate("QRplusplusClass", "Medium", Q_NULLPTR)
+         << QApplication::translate("QRplusplusClass", "Quartile", Q_NULLPTR)
+         << QApplication::translate("QRplusplusClass", "High", Q_NULLPTR)
+        );
+        label_color->setText(QApplication::translate("QRplusplusClass", "Color:", Q_NULLPTR));
+        label_borderSize->setText(QApplication::translate("QRplusplusClass", "Border Size:", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
         generateButton->setToolTip(QApplication::translate("QRplusplusClass", "Generate Button", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
@@ -279,6 +302,9 @@ public:
 #endif // QT_NO_WHATSTHIS
         generateButton->setText(QApplication::translate("QRplusplusClass", "Generate", Q_NULLPTR));
         exitButton->setText(QApplication::translate("QRplusplusClass", "Exit", Q_NULLPTR));
+        groupBox->setTitle(QApplication::translate("QRplusplusClass", "Directory", Q_NULLPTR));
+        label_saveto->setText(QApplication::translate("QRplusplusClass", "Save to:", Q_NULLPTR));
+        browseButton->setText(QApplication::translate("QRplusplusClass", "Browse...", Q_NULLPTR));
         menuFile->setTitle(QApplication::translate("QRplusplusClass", "File", Q_NULLPTR));
         menuAbout->setTitle(QApplication::translate("QRplusplusClass", "Help", Q_NULLPTR));
     } // retranslateUi

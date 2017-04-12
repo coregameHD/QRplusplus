@@ -1,7 +1,7 @@
 #ifndef QRPLUSPLUS_H
 #define QRPLUSPLUS_H
 
-#include <QtWidgets/QMainWindow>
+#include <QtWidgets>
 #include "ui_qrplusplus.h"
 #include <string>
 
@@ -15,6 +15,8 @@ public:
 
 private:
 	Ui::QRplusplusClass ui;
+	std::string fileDirectory;
+	QString dir;
 	int borderSize() { return ui.spinBox_borderSize->value(); }
 	std::string getColor();
 
@@ -24,6 +26,7 @@ private:
 	void generateQR();
 	void enableButton();
 	void aboutDialog();
+	void selectDirectory();
 };
 
 #endif // QRPLUSPLUS_H
