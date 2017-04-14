@@ -22,6 +22,9 @@ private:
 	(QUrl("https://coregame-th.com/", QUrl::TolerantMode));}
 	void openGithub() { QDesktopServices::openUrl
 	(QUrl("https://github.com/coregameHD/QRplusplus", QUrl::TolerantMode));}
+	void openFile() {
+		QDesktopServices::openUrl(QUrl::fromLocalFile(dir));
+	}
 	std::string getColor();
 
 	private slots:

@@ -16,24 +16,26 @@ QRplusplus::QRplusplus(QWidget *parent) : QMainWindow(parent)
 	//ui.textEdit->setStatusTip("XXX");
 	//this->setStatusTip("Status: Ready");
 	//ui.statusBar->setStyleSheet("color: blue");
-	ui.statusBar->showMessage("Text!");
+	ui.statusBar->showMessage("Status : OK");
 
 	//File directory
 	dir = QDir::currentPath();
 	ui.lineEdit_fileDirectory->setText(dir);
 
 	// Menu Bar
-	connect(ui.actionGenerate, &QAction::triggered, this, &QRplusplus::generateQR);
 	connect(ui.actionExit, &QAction::triggered, this, &QRplusplus::exitApp);
 	connect(ui.actionAbout, &QAction::triggered, this, &QRplusplus::aboutDialog);
 	connect(ui.actionWebsite, &QAction::triggered, this, &QRplusplus::openWeb);
 	connect(ui.actionGithub, &QAction::triggered, this, &QRplusplus::openGithub);
+	connect(ui.actionOpen, &QAction::triggered, this, &QRplusplus::openFile);
+	connect(ui.actionBrowse, &QAction::triggered, this, &QRplusplus::selectDirectory);
 
 	// Push Button
 	connect(ui.exitButton, SIGNAL(clicked()), this, SLOT(exitApp()));
 	connect(ui.userTextInput, SIGNAL(textChanged()), this, SLOT(enableButton()));
 	connect(ui.generateButton, SIGNAL(clicked()), this, SLOT(generateQR()));
 	connect(ui.browseButton, SIGNAL(clicked()), this, SLOT(selectDirectory()));
+	connect(ui.openButton, SIGNAL(clicked()), this, SLOT(openFile()));
 
 	// Color Combobox
 	ui.comboBox_color->setItemData(1, QBrush(QColor(244, 67, 54)), Qt::TextColorRole); // Red
@@ -71,7 +73,6 @@ void QRplusplus::exitApp() {
 if user enter any text in userTextInput textbox.
 */
 void QRplusplus::enableButton() {
-	ui.actionGenerate->setEnabled(!(ui.userTextInput->toPlainText().isEmpty()));
 	ui.generateButton->setEnabled(!(ui.userTextInput->toPlainText().isEmpty()));
 	ui.clearButton->setEnabled(!(ui.userTextInput->toPlainText().isEmpty()));
 }
