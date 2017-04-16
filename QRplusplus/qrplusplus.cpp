@@ -12,23 +12,32 @@
 QRplusplus::QRplusplus(QWidget *parent) : QMainWindow(parent)
 {
 	ui.setupUi(this);
-	this->setWindowTitle("QRplusplus : QR Code Generator");
 	//ui.textEdit->setStatusTip("XXX");
 	//this->setStatusTip("Status: Ready");
 	//ui.statusBar->setStyleSheet("color: blue");
-	ui.statusBar->showMessage("Status : OK");
 
-	//File directory
+	// Status Bar
+	ui.statusBar->showMessage("Status: Ready");
+	ui.groupDirectory->setStatusTip("Select save file location.");
+	ui.groupInput->setStatusTip("Enter your text to be put into the QR Code.");
+	ui.groupCustomize->setStatusTip("Select QR Code Sizes and Colors.");
+	ui.generateButton->setStatusTip("Click to generate a QR Code.");
+	ui.exitButton->setStatusTip("Exit an application.");
+
+	// File directory
 	dir = QDir::currentPath();
 	ui.lineEdit_fileDirectory->setText(dir);
 
 	// Menu Bar
+	connect(ui.actionBrowse, &QAction::triggered, this, &QRplusplus::selectDirectory);
+	connect(ui.actionOpen, &QAction::triggered, this, &QRplusplus::openFile);
 	connect(ui.actionExit, &QAction::triggered, this, &QRplusplus::exitApp);
-	connect(ui.actionAbout, &QAction::triggered, this, &QRplusplus::aboutDialog);
+
 	connect(ui.actionWebsite, &QAction::triggered, this, &QRplusplus::openWeb);
 	connect(ui.actionGithub, &QAction::triggered, this, &QRplusplus::openGithub);
-	connect(ui.actionOpen, &QAction::triggered, this, &QRplusplus::openFile);
-	connect(ui.actionBrowse, &QAction::triggered, this, &QRplusplus::selectDirectory);
+	connect(ui.actionAbout_Qt, &QAction::triggered, this, &QRplusplus::aboutQt);
+	connect(ui.actionAbout, &QAction::triggered, this, &QRplusplus::aboutDialog);
+	
 
 	// Push Button
 	connect(ui.exitButton, SIGNAL(clicked()), this, SLOT(exitApp()));
@@ -98,6 +107,10 @@ void QRplusplus::aboutDialog() {
 	msgBox.exec();
 }
 
+void QRplusplus::aboutQt() {
+	QApplication::aboutQt();
+}
+
 /* 
 * Get current index from combobox_color and return its color in std::string format
 * By default, it have 14 colors to choose. (Color palette from Android Material Design) 
@@ -149,6 +162,9 @@ void QRplusplus::generateQR() {
 
 	// Display doneDialog
 	QRplusplus::doneDialog();
+
+	// Change status bar
+	ui.statusBar->showMessage("Done!");
 }
 
 void QRplusplus::selectDirectory() {

@@ -34,6 +34,7 @@ private:
 	void enableButton();
 	void aboutDialog();
 	void selectDirectory();
+	void aboutQt();
 };
 
 #endif // QRPLUSPLUS_H

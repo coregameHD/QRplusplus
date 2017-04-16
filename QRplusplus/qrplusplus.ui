@@ -29,7 +29,11 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>QRplusplus</string>
+   <string>QR++ : QR Code Generator</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>QRplusplus_icon.ico</normaloff>QRplusplus_icon.ico</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QGroupBox" name="groupInput">
@@ -290,7 +294,7 @@
     <property name="geometry">
      <rect>
       <x>640</x>
-      <y>410</y>
+      <y>405</y>
       <width>140</width>
       <height>70</height>
      </rect>
@@ -324,7 +328,7 @@
      <string>Exit</string>
     </property>
    </widget>
-   <widget class="QGroupBox" name="groupBox">
+   <widget class="QGroupBox" name="groupDirectory">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -392,6 +396,8 @@
     <addaction name="actionWebsite"/>
     <addaction name="actionGithub"/>
     <addaction name="separator"/>
+    <addaction name="actionAbout_Qt"/>
+    <addaction name="actionAbout_QRcodegen"/>
     <addaction name="actionAbout"/>
    </widget>
    <addaction name="menuFile"/>
@@ -413,7 +419,7 @@
   </action>
   <action name="actionAbout">
    <property name="text">
-    <string>About</string>
+    <string>About QR++</string>
    </property>
   </action>
   <action name="actionOpen">
@@ -436,6 +442,21 @@
     <string>Browse...</string>
    </property>
   </action>
+  <action name="actionGenerate_2">
+   <property name="text">
+    <string>Generate</string>
+   </property>
+  </action>
+  <action name="actionAbout_Qt">
+   <property name="text">
+    <string>About Qt</string>
+   </property>
+  </action>
+  <action name="actionAbout_QRcodegen">
+   <property name="text">
+    <string>About QRcodegen</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
@@ -450,7 +471,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>768</x>
-     <y>185</y>
+     <y>175</y>
     </hint>
     <hint type="destinationlabel">
      <x>706</x>
@@ -465,8 +486,8 @@
    <slot>paste()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>668</x>
-     <y>185</y>
+     <x>687</x>
+     <y>175</y>
     </hint>
     <hint type="destinationlabel">
      <x>634</x>

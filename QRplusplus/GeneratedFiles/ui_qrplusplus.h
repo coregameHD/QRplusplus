@@ -43,6 +43,9 @@ public:
     QAction *actionWebsite;
     QAction *actionGithub;
     QAction *actionBrowse;
+    QAction *actionGenerate_2;
+    QAction *actionAbout_Qt;
+    QAction *actionAbout_QRcodegen;
     QWidget *centralWidget;
     QGroupBox *groupInput;
     QWidget *verticalLayoutWidget;
@@ -64,7 +67,7 @@ public:
     QLabel *label_borderSize;
     QPushButton *generateButton;
     QPushButton *exitButton;
-    QGroupBox *groupBox;
+    QGroupBox *groupDirectory;
     QWidget *horizontalLayoutWidget;
     QHBoxLayout *directoryLayout;
     QLabel *label_saveto;
@@ -87,6 +90,9 @@ public:
         QRplusplusClass->setSizePolicy(sizePolicy);
         QRplusplusClass->setMinimumSize(QSize(800, 600));
         QRplusplusClass->setMaximumSize(QSize(800, 600));
+        QIcon icon;
+        icon.addFile(QStringLiteral("QRplusplus_icon.ico"), QSize(), QIcon::Normal, QIcon::Off);
+        QRplusplusClass->setWindowIcon(icon);
         actionGenerate = new QAction(QRplusplusClass);
         actionGenerate->setObjectName(QStringLiteral("actionGenerate"));
         actionGenerate->setEnabled(false);
@@ -102,6 +108,12 @@ public:
         actionGithub->setObjectName(QStringLiteral("actionGithub"));
         actionBrowse = new QAction(QRplusplusClass);
         actionBrowse->setObjectName(QStringLiteral("actionBrowse"));
+        actionGenerate_2 = new QAction(QRplusplusClass);
+        actionGenerate_2->setObjectName(QStringLiteral("actionGenerate_2"));
+        actionAbout_Qt = new QAction(QRplusplusClass);
+        actionAbout_Qt->setObjectName(QStringLiteral("actionAbout_Qt"));
+        actionAbout_QRcodegen = new QAction(QRplusplusClass);
+        actionAbout_QRcodegen->setObjectName(QStringLiteral("actionAbout_QRcodegen"));
         centralWidget = new QWidget(QRplusplusClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         groupInput = new QGroupBox(centralWidget);
@@ -194,7 +206,7 @@ public:
         generateButton = new QPushButton(centralWidget);
         generateButton->setObjectName(QStringLiteral("generateButton"));
         generateButton->setEnabled(false);
-        generateButton->setGeometry(QRect(640, 410, 140, 70));
+        generateButton->setGeometry(QRect(640, 405, 140, 70));
         QFont font;
         font.setBold(false);
         font.setWeight(50);
@@ -202,10 +214,10 @@ public:
         exitButton = new QPushButton(centralWidget);
         exitButton->setObjectName(QStringLiteral("exitButton"));
         exitButton->setGeometry(QRect(640, 490, 140, 28));
-        groupBox = new QGroupBox(centralWidget);
-        groupBox->setObjectName(QStringLiteral("groupBox"));
-        groupBox->setGeometry(QRect(20, 20, 761, 61));
-        horizontalLayoutWidget = new QWidget(groupBox);
+        groupDirectory = new QGroupBox(centralWidget);
+        groupDirectory->setObjectName(QStringLiteral("groupDirectory"));
+        groupDirectory->setGeometry(QRect(20, 20, 761, 61));
+        horizontalLayoutWidget = new QWidget(groupDirectory);
         horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
         horizontalLayoutWidget->setGeometry(QRect(10, 20, 741, 31));
         directoryLayout = new QHBoxLayout(horizontalLayoutWidget);
@@ -256,6 +268,8 @@ public:
         menuAbout->addAction(actionWebsite);
         menuAbout->addAction(actionGithub);
         menuAbout->addSeparator();
+        menuAbout->addAction(actionAbout_Qt);
+        menuAbout->addAction(actionAbout_QRcodegen);
         menuAbout->addAction(actionAbout);
 
         retranslateUi(QRplusplusClass);
@@ -267,14 +281,17 @@ public:
 
     void retranslateUi(QMainWindow *QRplusplusClass)
     {
-        QRplusplusClass->setWindowTitle(QApplication::translate("QRplusplusClass", "QRplusplus", Q_NULLPTR));
+        QRplusplusClass->setWindowTitle(QApplication::translate("QRplusplusClass", "QR++ : QR Code Generator", Q_NULLPTR));
         actionGenerate->setText(QApplication::translate("QRplusplusClass", "Generate", Q_NULLPTR));
         actionExit->setText(QApplication::translate("QRplusplusClass", "Exit", Q_NULLPTR));
-        actionAbout->setText(QApplication::translate("QRplusplusClass", "About", Q_NULLPTR));
+        actionAbout->setText(QApplication::translate("QRplusplusClass", "About QR++", Q_NULLPTR));
         actionOpen->setText(QApplication::translate("QRplusplusClass", "Open", Q_NULLPTR));
         actionWebsite->setText(QApplication::translate("QRplusplusClass", "Website", Q_NULLPTR));
         actionGithub->setText(QApplication::translate("QRplusplusClass", "Github", Q_NULLPTR));
         actionBrowse->setText(QApplication::translate("QRplusplusClass", "Browse...", Q_NULLPTR));
+        actionGenerate_2->setText(QApplication::translate("QRplusplusClass", "Generate", Q_NULLPTR));
+        actionAbout_Qt->setText(QApplication::translate("QRplusplusClass", "About Qt", Q_NULLPTR));
+        actionAbout_QRcodegen->setText(QApplication::translate("QRplusplusClass", "About QRcodegen", Q_NULLPTR));
         groupInput->setTitle(QApplication::translate("QRplusplusClass", "Input", Q_NULLPTR));
         label_text->setText(QApplication::translate("QRplusplusClass", "Text:", Q_NULLPTR));
         pasteButton->setText(QApplication::translate("QRplusplusClass", "Paste", Q_NULLPTR));
@@ -317,7 +334,7 @@ public:
 #endif // QT_NO_WHATSTHIS
         generateButton->setText(QApplication::translate("QRplusplusClass", "Generate", Q_NULLPTR));
         exitButton->setText(QApplication::translate("QRplusplusClass", "Exit", Q_NULLPTR));
-        groupBox->setTitle(QApplication::translate("QRplusplusClass", "Directory", Q_NULLPTR));
+        groupDirectory->setTitle(QApplication::translate("QRplusplusClass", "Directory", Q_NULLPTR));
         label_saveto->setText(QApplication::translate("QRplusplusClass", "Save to:", Q_NULLPTR));
         browseButton->setText(QApplication::translate("QRplusplusClass", "Browse...", Q_NULLPTR));
         menuFile->setTitle(QApplication::translate("QRplusplusClass", "File", Q_NULLPTR));
