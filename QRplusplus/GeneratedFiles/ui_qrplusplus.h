@@ -42,10 +42,7 @@ public:
     QAction *actionOpen;
     QAction *actionWebsite;
     QAction *actionGithub;
-    QAction *actionGenerate_2;
     QAction *actionBrowse;
-    QAction *actionGenerate_3;
-    QAction *actionGen;
     QWidget *centralWidget;
     QGroupBox *groupInput;
     QWidget *verticalLayoutWidget;
@@ -73,7 +70,6 @@ public:
     QLabel *label_saveto;
     QLineEdit *lineEdit_fileDirectory;
     QPushButton *browseButton;
-    QPushButton *openButton;
     QMenuBar *menuBar;
     QMenu *menuFile;
     QMenu *menuAbout;
@@ -104,14 +100,8 @@ public:
         actionWebsite->setObjectName(QStringLiteral("actionWebsite"));
         actionGithub = new QAction(QRplusplusClass);
         actionGithub->setObjectName(QStringLiteral("actionGithub"));
-        actionGenerate_2 = new QAction(QRplusplusClass);
-        actionGenerate_2->setObjectName(QStringLiteral("actionGenerate_2"));
         actionBrowse = new QAction(QRplusplusClass);
         actionBrowse->setObjectName(QStringLiteral("actionBrowse"));
-        actionGenerate_3 = new QAction(QRplusplusClass);
-        actionGenerate_3->setObjectName(QStringLiteral("actionGenerate_3"));
-        actionGen = new QAction(QRplusplusClass);
-        actionGen->setObjectName(QStringLiteral("actionGen"));
         centralWidget = new QWidget(QRplusplusClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         groupInput = new QGroupBox(centralWidget);
@@ -238,16 +228,10 @@ public:
 
         directoryLayout->addWidget(browseButton);
 
-        openButton = new QPushButton(horizontalLayoutWidget);
-        openButton->setObjectName(QStringLiteral("openButton"));
-        openButton->setEnabled(false);
-
-        directoryLayout->addWidget(openButton);
-
         QRplusplusClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(QRplusplusClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 800, 26));
+        menuBar->setGeometry(QRect(0, 0, 800, 21));
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QStringLiteral("menuFile"));
         menuAbout = new QMenu(menuBar);
@@ -290,10 +274,7 @@ public:
         actionOpen->setText(QApplication::translate("QRplusplusClass", "Open", Q_NULLPTR));
         actionWebsite->setText(QApplication::translate("QRplusplusClass", "Website", Q_NULLPTR));
         actionGithub->setText(QApplication::translate("QRplusplusClass", "Github", Q_NULLPTR));
-        actionGenerate_2->setText(QApplication::translate("QRplusplusClass", "Generate", Q_NULLPTR));
         actionBrowse->setText(QApplication::translate("QRplusplusClass", "Browse...", Q_NULLPTR));
-        actionGenerate_3->setText(QApplication::translate("QRplusplusClass", "Generate QR Code", Q_NULLPTR));
-        actionGen->setText(QApplication::translate("QRplusplusClass", "Generate", Q_NULLPTR));
         groupInput->setTitle(QApplication::translate("QRplusplusClass", "Input", Q_NULLPTR));
         label_text->setText(QApplication::translate("QRplusplusClass", "Text:", Q_NULLPTR));
         pasteButton->setText(QApplication::translate("QRplusplusClass", "Paste", Q_NULLPTR));
@@ -339,7 +320,6 @@ public:
         groupBox->setTitle(QApplication::translate("QRplusplusClass", "Directory", Q_NULLPTR));
         label_saveto->setText(QApplication::translate("QRplusplusClass", "Save to:", Q_NULLPTR));
         browseButton->setText(QApplication::translate("QRplusplusClass", "Browse...", Q_NULLPTR));
-        openButton->setText(QApplication::translate("QRplusplusClass", "Open", Q_NULLPTR));
         menuFile->setTitle(QApplication::translate("QRplusplusClass", "File", Q_NULLPTR));
         menuAbout->setTitle(QApplication::translate("QRplusplusClass", "Help", Q_NULLPTR));
     } // retranslateUi

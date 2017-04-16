@@ -35,7 +35,6 @@ QRplusplus::QRplusplus(QWidget *parent) : QMainWindow(parent)
 	connect(ui.userTextInput, SIGNAL(textChanged()), this, SLOT(enableButton()));
 	connect(ui.generateButton, SIGNAL(clicked()), this, SLOT(generateQR()));
 	connect(ui.browseButton, SIGNAL(clicked()), this, SLOT(selectDirectory()));
-	connect(ui.openButton, SIGNAL(clicked()), this, SLOT(openFile()));
 
 	// Color Combobox
 	ui.comboBox_color->setItemData(1, QBrush(QColor(244, 67, 54)), Qt::TextColorRole); // Red

@@ -363,16 +363,6 @@
         </property>
        </widget>
       </item>
-      <item>
-       <widget class="QPushButton" name="openButton">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="text">
-         <string>Open</string>
-        </property>
-       </widget>
-      </item>
      </layout>
     </widget>
    </widget>
@@ -383,7 +373,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -441,24 +431,9 @@
     <string>Github</string>
    </property>
   </action>
-  <action name="actionGenerate_2">
-   <property name="text">
-    <string>Generate</string>
-   </property>
-  </action>
   <action name="actionBrowse">
    <property name="text">
     <string>Browse...</string>
-   </property>
-  </action>
-  <action name="actionGenerate_3">
-   <property name="text">
-    <string>Generate QR Code</string>
-   </property>
-  </action>
-  <action name="actionGen">
-   <property name="text">
-    <string>Generate</string>
    </property>
   </action>
  </widget>
