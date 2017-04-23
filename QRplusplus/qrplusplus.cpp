@@ -1,6 +1,7 @@
-#include "qrplusplus.h"
+﻿#include "qrplusplus.h"
 #include "QrCode.hpp"
 #include <QtWidgets>
+#include <QPixmap>
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -61,14 +62,46 @@ void QRplusplus::doneDialog() {
 */
 void QRplusplus::aboutDialog() {
 	QMessageBox msgBox;
-	msgBox.setIcon(QMessageBox::Information);
-	QString msg = "QRplusplus : QR Code Generator\n\nBuild with love by Coregame";
-	msgBox.setText(msg);
+	msgBox.setWindowTitle("About QR++");
+	msgBox.setTextFormat(Qt::RichText);
+	msgBox.setText("<b>QRplusplus</b> \
+	<br>C++ QR Code Generator\
+	<br><br> Build with love by Coregame\
+	<br><br><b>Github: </b><a href=\"https://github.com/coregameHD/QRplusplus\">\
+	https://github.com/coregameHD/QRplusplus</a></p> \
+	<br><b>Download: </b><a href=\"https://github.com/coregameHD/QRplusplus/releases\">\
+	https://github.com/coregameHD/QRplusplus/releases</a></p>");
 	msgBox.exec();
 }
 
 void QRplusplus::aboutQt() {
 	QApplication::aboutQt();
+}
+
+void QRplusplus::nayukiDialog() {
+	QMessageBox msgBox;
+	msgBox.setWindowTitle("About Nayuki's qrcodegen");
+	msgBox.setTextFormat(Qt::RichText);
+	msgBox.setText("<b>Nayuki's qrcodegen</b>\
+	<br>Copyright 2017 Project Nayuki. (MIT License)\
+	<br><br><a href=\"https://www.nayuki.io/page/qr-code-generator-library\">\
+	https://www.nayuki.io/page/qr-code-generator-library</a></p> \
+	<br><br>Permission is hereby granted, free of charge, to any person obtaining \
+	a copy of this software and associated documentation files (the \"Software\"), to \
+	deal in the Software without restriction, including without limitation the rights \
+	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of \
+	the Software, and to permit persons to whom the Software is furnished to do so, \
+	subject to the following conditions:\
+	<br><br>The above copyright notice and this permission notice shall be \
+	included in all copies or substantial portions of the Software.\
+	<br><br>The Software \
+	is provided \"as is\", without warranty of any kind, express or implied, \
+	including but not limited to the warranties of merchantability, fitness \
+	for a particular purpose and noninfringement. In no event shall the authors or \
+	copyright holders be liable for any claim, damages or other liability, whether \
+	in an action of contract, tort or otherwise, arising from, out of or in connection \
+	with the Software or the use or other dealings in the Software.");
+	msgBox.exec();
 }
 
 /* 
@@ -146,6 +179,7 @@ void QRplusplus::initMenuBar() {
 	connect(ui.actionWebsite, &QAction::triggered, this, &QRplusplus::openWeb);
 	connect(ui.actionGithub, &QAction::triggered, this, &QRplusplus::openGithub);
 	connect(ui.actionAbout_Qt, &QAction::triggered, this, &QRplusplus::aboutQt);
+	connect(ui.actionAbout_Nayuki, &QAction::triggered, this, &QRplusplus::nayukiDialog);
 	connect(ui.actionAbout, &QAction::triggered, this, &QRplusplus::aboutDialog);
 }
 

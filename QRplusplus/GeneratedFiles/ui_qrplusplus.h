@@ -45,7 +45,7 @@ public:
     QAction *actionBrowse;
     QAction *actionGenerate_2;
     QAction *actionAbout_Qt;
-    QAction *actionAbout_QRcodegen;
+    QAction *actionAbout_Nayuki;
     QWidget *centralWidget;
     QGroupBox *groupInput;
     QWidget *verticalLayoutWidget;
@@ -104,6 +104,7 @@ public:
         actionOpen->setObjectName(QStringLiteral("actionOpen"));
         actionWebsite = new QAction(QRplusplusClass);
         actionWebsite->setObjectName(QStringLiteral("actionWebsite"));
+        actionWebsite->setEnabled(false);
         actionGithub = new QAction(QRplusplusClass);
         actionGithub->setObjectName(QStringLiteral("actionGithub"));
         actionBrowse = new QAction(QRplusplusClass);
@@ -112,8 +113,8 @@ public:
         actionGenerate_2->setObjectName(QStringLiteral("actionGenerate_2"));
         actionAbout_Qt = new QAction(QRplusplusClass);
         actionAbout_Qt->setObjectName(QStringLiteral("actionAbout_Qt"));
-        actionAbout_QRcodegen = new QAction(QRplusplusClass);
-        actionAbout_QRcodegen->setObjectName(QStringLiteral("actionAbout_QRcodegen"));
+        actionAbout_Nayuki = new QAction(QRplusplusClass);
+        actionAbout_Nayuki->setObjectName(QStringLiteral("actionAbout_Nayuki"));
         centralWidget = new QWidget(QRplusplusClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         groupInput = new QGroupBox(centralWidget);
@@ -269,7 +270,7 @@ public:
         menuAbout->addAction(actionGithub);
         menuAbout->addSeparator();
         menuAbout->addAction(actionAbout_Qt);
-        menuAbout->addAction(actionAbout_QRcodegen);
+        menuAbout->addAction(actionAbout_Nayuki);
         menuAbout->addAction(actionAbout);
 
         retranslateUi(QRplusplusClass);
@@ -291,7 +292,7 @@ public:
         actionBrowse->setText(QApplication::translate("QRplusplusClass", "Browse...", Q_NULLPTR));
         actionGenerate_2->setText(QApplication::translate("QRplusplusClass", "Generate", Q_NULLPTR));
         actionAbout_Qt->setText(QApplication::translate("QRplusplusClass", "About Qt", Q_NULLPTR));
-        actionAbout_QRcodegen->setText(QApplication::translate("QRplusplusClass", "About QRcodegen", Q_NULLPTR));
+        actionAbout_Nayuki->setText(QApplication::translate("QRplusplusClass", "About QRcodegen", Q_NULLPTR));
         groupInput->setTitle(QApplication::translate("QRplusplusClass", "Input", Q_NULLPTR));
         label_text->setText(QApplication::translate("QRplusplusClass", "Text:", Q_NULLPTR));
         pasteButton->setText(QApplication::translate("QRplusplusClass", "Paste", Q_NULLPTR));
@@ -320,9 +321,6 @@ public:
         comboBox_errorlvl->clear();
         comboBox_errorlvl->insertItems(0, QStringList()
          << QApplication::translate("QRplusplusClass", "Low (Default)", Q_NULLPTR)
-         << QApplication::translate("QRplusplusClass", "Medium", Q_NULLPTR)
-         << QApplication::translate("QRplusplusClass", "Quartile", Q_NULLPTR)
-         << QApplication::translate("QRplusplusClass", "High", Q_NULLPTR)
         );
         label_color->setText(QApplication::translate("QRplusplusClass", "Color:", Q_NULLPTR));
         label_borderSize->setText(QApplication::translate("QRplusplusClass", "Border Size:", Q_NULLPTR));

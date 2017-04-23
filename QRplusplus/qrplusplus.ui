@@ -234,21 +234,6 @@
           <string>Low (Default)</string>
          </property>
         </item>
-        <item>
-         <property name="text">
-          <string>Medium</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Quartile</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>High</string>
-         </property>
-        </item>
        </widget>
       </item>
       <item row="3" column="1">
@@ -397,7 +382,7 @@
     <addaction name="actionGithub"/>
     <addaction name="separator"/>
     <addaction name="actionAbout_Qt"/>
-    <addaction name="actionAbout_QRcodegen"/>
+    <addaction name="actionAbout_Nayuki"/>
     <addaction name="actionAbout"/>
    </widget>
    <addaction name="menuFile"/>
@@ -428,6 +413,9 @@
    </property>
   </action>
   <action name="actionWebsite">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Website</string>
    </property>
@@ -452,7 +440,7 @@
     <string>About Qt</string>
    </property>
   </action>
-  <action name="actionAbout_QRcodegen">
+  <action name="actionAbout_Nayuki">
    <property name="text">
     <string>About QRcodegen</string>
    </property>

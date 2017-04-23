@@ -40,6 +40,7 @@ private:
 	void doneDialog();
 	void generateQR();
 	void enableButton();
+	void nayukiDialog();
 	void aboutDialog();
 	void selectDirectory();
 	void aboutQt();
