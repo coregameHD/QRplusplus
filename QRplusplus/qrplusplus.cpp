@@ -1,20 +1,17 @@
-﻿#include "qrplusplus.h"
-#include "QrCode.hpp"
-#include <QtWidgets>
-#include <QPixmap>
+﻿#include <QtWidgets>
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <vector>
+#include "qrplusplus.h"
+#include "QrCode.hpp"
 
 /*
 * Default Constructor with initial setup.
 */
-QRplusplus::QRplusplus(QWidget *parent) : QMainWindow(parent)
-{
+QRplusplus::QRplusplus(QWidget *parent) : QMainWindow(parent) {
 	ui.setupUi(this);
 
-	// UI Initialization
 	initMenuBar();
 	initFileDirectory();
 	initPushButton();
@@ -23,66 +20,47 @@ QRplusplus::QRplusplus(QWidget *parent) : QMainWindow(parent)
 }
 
 /*
-* Default Degenerator
+* Default Destructor
 */
 QRplusplus::~QRplusplus(){
-
+	// pass
 }
 
 /*
-* A function to quit an application.
+* A function to open a landing page site.
 */
-void QRplusplus::exitApp() {
-	QApplication::exit();
+void QRplusplus::openWeb() {
+	QDesktopServices::openUrl
+	(QUrl("", QUrl::TolerantMode)); // TODO: Insert website here
 }
 
 /*
-* When user open a program, by default, these buttons are disabled.
-* enableButton() is a function to enable actionGenerate, generateButton, and clearButton
-if user enter any text in userTextInput textbox.
+* A function to open a Github page.
 */
-void QRplusplus::enableButton() {
-	ui.generateButton->setEnabled(!(ui.userTextInput->toPlainText().isEmpty()));
-	ui.clearButton->setEnabled(!(ui.userTextInput->toPlainText().isEmpty()));
+void QRplusplus::openGithub() {
+	QDesktopServices::openUrl
+	(QUrl("https://github.com/coregameHD/QRplusplus", QUrl::TolerantMode));
 }
 
 /*
-* Display 'Done' dialog
+* Display 'Done' dialog with text to be encoded.
 */
 void QRplusplus::doneDialog() {
 	QMessageBox msgBox;
 	msgBox.setIcon(QMessageBox::Information);
-	QString msg = "Done!!\n\nText: \n" + ui.userTextInput->toPlainText();
+	QString msg = "Done!\n\nText to be encoded: \n" + ui.userTextInput->toPlainText();
 	msgBox.setText(msg);
 	msgBox.exec();
 }
 
 /*
-* Display 'About' dialog
+* Display 'About Nayuki's QR Code Generator Library' Dialog.
 */
-void QRplusplus::aboutDialog() {
-	QMessageBox msgBox;
-	msgBox.setWindowTitle("About QR++");
-	msgBox.setTextFormat(Qt::RichText);
-	msgBox.setText("<b>QRplusplus</b> \
-	<br>C++ QR Code Generator\
-	<br><br> Build with love by Coregame\
-	<br><br><b>Github: </b><a href=\"https://github.com/coregameHD/QRplusplus\">\
-	https://github.com/coregameHD/QRplusplus</a></p> \
-	<br><b>Download: </b><a href=\"https://github.com/coregameHD/QRplusplus/releases\">\
-	https://github.com/coregameHD/QRplusplus/releases</a></p>");
-	msgBox.exec();
-}
-
-void QRplusplus::aboutQt() {
-	QApplication::aboutQt();
-}
-
 void QRplusplus::nayukiDialog() {
 	QMessageBox msgBox;
 	msgBox.setWindowTitle("About Nayuki's qrcodegen");
 	msgBox.setTextFormat(Qt::RichText);
-	msgBox.setText("<b>Nayuki's qrcodegen</b>\
+	msgBox.setText("<b>Nayuki's QR Code Generator Library</b>\
 	<br>Copyright 2017 Project Nayuki. (MIT License)\
 	<br><br><a href=\"https://www.nayuki.io/page/qr-code-generator-library\">\
 	https://www.nayuki.io/page/qr-code-generator-library</a></p> \
@@ -104,10 +82,90 @@ void QRplusplus::nayukiDialog() {
 	msgBox.exec();
 }
 
-/* 
+/*
+* Display true 'About' dialog.
+*/
+void QRplusplus::aboutDialog() {
+	QMessageBox msgBox;
+	msgBox.setWindowTitle("About QR++");
+	msgBox.setTextFormat(Qt::RichText);
+	msgBox.setText("<b>QRplusplus</b> \
+	<br>C++ QR Code Generator\
+	<br><br> Build with love by Coregame\
+	<br><br><b>Github: </b><a href=\"https://github.com/coregameHD/QRplusplus\">\
+	https://github.com/coregameHD/QRplusplus</a></p> \
+	<br><b>Download: </b><a href=\"https://github.com/coregameHD/QRplusplus/releases\">\
+	https://github.com/coregameHD/QRplusplus/releases</a></p>");
+	msgBox.exec();
+}
+
+// ===================================
+//			Qt Slots
+// ===================================
+
+/*
+* When user open a program, by default, these buttons are disabled.
+* enableButton() is a function to enable generateButton and clearButton
+if user enter any text in userTextInput textbox.
+*/
+void QRplusplus::enableButton() {
+	ui.generateButton->setEnabled(!(ui.userTextInput->toPlainText().isEmpty()));
+	ui.clearButton->setEnabled(!(ui.userTextInput->toPlainText().isEmpty()));
+}
+
+/*
+* This function enables user to select a directory.
+* By default, the dialog appear with current directory.
+* Update file directory lineEdit and shows in the program.
+*/
+void QRplusplus::selectDirectory() {
+	dir = QFileDialog::getExistingDirectory(this, tr("Select Directory"), QDir::currentPath());
+	ui.lineEdit_fileDirectory->setText(dir);
+}
+
+/*
+* Function to receive a text from userTextInput textbox.
+* qrcodegen library will tranforms a text into QR Code as SVG format.
+* Then, save generated SVG XML as a file, doneDialog will be appeared.
+*/
+void QRplusplus::generateQR() {
+	// Convert from QString to const char*
+	QString msgfromtextbox = ui.userTextInput->toPlainText();
+	std::string stringtext = msgfromtextbox.toStdString();
+	const char *text = stringtext.c_str();
+
+	// Encode text into SVG XML format
+	const qrcodegen::QrCode::Ecc &errCorLvl = qrcodegen::QrCode::Ecc::LOW;
+	const qrcodegen::QrCode qr = qrcodegen::QrCode::encodeText(text, errCorLvl);
+	
+	// Save SVG XML into file
+	std::ofstream myfile;
+	myfile.open(dir.toStdString() + "/QRcode_output.svg");
+	myfile << qr.toSvgString(QRplusplus::getBorderSize(), QRplusplus::getColor()) << std::endl;
+	myfile.close();
+
+	// Display doneDialog
+	QRplusplus::doneDialog();
+
+	// Change status
+	ui.statusBar->showMessage("Done!");
+}
+
+/*
+* A function to quit an application.
+*/
+void QRplusplus::exitApp() {
+	QApplication::exit();
+}
+
+// ===================================
+//			Getter Functions
+// ===================================
+
+/*
 * Get current index from combobox_color and return its color in std::string format
-* By default, it have 14 colors to choose. (Color palette from Android Material Design) 
-* @return Hex color code without '#' symbol
+* By default, it have 14 colors to choose. (Color palette from Android Material Design)
+@return Hex color code without '#' symbol
 */
 std::string QRplusplus::getColor() {
 	// Get current index from comboBox_color
@@ -132,50 +190,20 @@ std::string QRplusplus::getColor() {
 	}
 }
 
+// ===================================
+//			UI Initialization
+// ===================================
+
 /*
-* Function to receive a text from userTextInput textbox.
-* qrcodegen library will tranforms a text into QR Code in SVG Format.
-* Then, save SVG XML into file, doneDialog will be appeared.
+* A function to initialize a menu bar.
 */
-void QRplusplus::generateQR() {
-	// Convert from QString to const char*
-	QString msgfromtextbox = ui.userTextInput->toPlainText();
-	std::string stringtext = msgfromtextbox.toStdString();
-	const char *text = stringtext.c_str();
-
-	// Encode text into SVG XML format
-	const qrcodegen::QrCode::Ecc &errCorLvl = qrcodegen::QrCode::Ecc::LOW;
-	const qrcodegen::QrCode qr = qrcodegen::QrCode::encodeText(text, errCorLvl);
-	
-	// Save SVG XML into file
-	std::ofstream myfile;
-	myfile.open(dir.toStdString() + "/QRcode_output.svg");
-	myfile << qr.toSvgString(QRplusplus::borderSize(), QRplusplus::getColor()) << std::endl;
-	myfile.close();
-
-	// Display doneDialog
-	QRplusplus::doneDialog();
-
-	// Change status bar
-	ui.statusBar->showMessage("Done!");
-}
-
-void QRplusplus::selectDirectory() {
-	dir = QFileDialog::getExistingDirectory(this,
-		tr("Select Directory"), QDir::currentPath());
-	ui.lineEdit_fileDirectory->setText(dir);
-}
-
-// ===================================
-// UI Initialization
-// ===================================
-
 void QRplusplus::initMenuBar() {
-	// Menu Bar
+	// Menu 'File'
 	connect(ui.actionBrowse, &QAction::triggered, this, &QRplusplus::selectDirectory);
 	connect(ui.actionOpen, &QAction::triggered, this, &QRplusplus::openFile);
 	connect(ui.actionExit, &QAction::triggered, this, &QRplusplus::exitApp);
 
+	// Menu 'About'
 	connect(ui.actionWebsite, &QAction::triggered, this, &QRplusplus::openWeb);
 	connect(ui.actionGithub, &QAction::triggered, this, &QRplusplus::openGithub);
 	connect(ui.actionAbout_Qt, &QAction::triggered, this, &QRplusplus::aboutQt);
@@ -183,12 +211,19 @@ void QRplusplus::initMenuBar() {
 	connect(ui.actionAbout, &QAction::triggered, this, &QRplusplus::aboutDialog);
 }
 
+/*
+* A function to initialize file directory lineEdit.
+@param dir	current path (system default)
+*/
 void QRplusplus::initFileDirectory() {
 	// File directory
 	dir = QDir::currentPath();
 	ui.lineEdit_fileDirectory->setText(dir);
 }
 
+/*
+* A function to initialize all pushButton.
+*/
 void QRplusplus::initPushButton() {
 	// Push Button
 	connect(ui.exitButton, SIGNAL(clicked()), this, SLOT(exitApp()));
@@ -216,11 +251,14 @@ void QRplusplus::initColorComboBox() {
 	ui.comboBox_color->setItemData(13, QBrush(QColor(75, 75, 75)), Qt::TextColorRole); // Grey
 }
 
+/*
+* A function to initialize status bar.
+*/
 void QRplusplus::initStatusBar() {
 	// Status Bar
 	ui.statusBar->showMessage("Status: Ready");
 
-	// Status Tip
+	// Tooltip
 	ui.groupDirectory->setStatusTip("Select save file location.");
 	ui.groupInput->setStatusTip("Enter your text to be put into the QR Code.");
 	ui.groupCustomize->setStatusTip("Select QR Code Sizes and Colors.");

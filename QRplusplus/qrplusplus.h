@@ -2,11 +2,10 @@
 #define QRPLUSPLUS_H
 
 #include <QtWidgets>
-#include "ui_qrplusplus.h"
 #include <string>
+#include "ui_qrplusplus.h"
 
-class QRplusplus : public QMainWindow
-{
+class QRplusplus : public QMainWindow {
 	Q_OBJECT
 
 public:
@@ -15,35 +14,37 @@ public:
 
 private:
 	Ui::QRplusplusClass ui;
-	std::string fileDirectory;
-	QString dir;
-	int borderSize() { return ui.spinBox_borderSize->value(); }
-	void openWeb() { QDesktopServices::openUrl
-	(QUrl("https://coregame-th.com/", QUrl::TolerantMode));}
-	void openGithub() { QDesktopServices::openUrl
-	(QUrl("https://github.com/coregameHD/QRplusplus", QUrl::TolerantMode));}
-	void openFile() {
-		QDesktopServices::openUrl(QUrl::fromLocalFile(dir));
-	}
-	std::string getColor();
 
-	// UI Initialization
+	// Member data
+	QString dir;
+	std::string fileDirectory;
+
+	// Getter functions
+	std::string getColor();
+	int getBorderSize() { return ui.spinBox_borderSize->value(); }
+
+	// Member functions
+	void openWeb();
+	void openGithub();
+	void openFile() { QDesktopServices::openUrl(QUrl::fromLocalFile(dir)); }
+	void doneDialog();
+	void aboutQt() { QApplication::aboutQt(); }
+	void nayukiDialog();
+	void aboutDialog();
+
+	// UI Initialization Functions
 	void initMenuBar();
 	void initFileDirectory();
 	void initPushButton();
 	void initColorComboBox();
 	void initStatusBar();
 
-	// SLOT
+	// Qt Slots
 	private slots:
-	void exitApp();
-	void doneDialog();
-	void generateQR();
-	void enableButton();
-	void nayukiDialog();
-	void aboutDialog();
-	void selectDirectory();
-	void aboutQt();
+		void enableButton();
+		void selectDirectory();
+		void generateQR();
+		void exitApp();
 };
 
 #endif // QRPLUSPLUS_H

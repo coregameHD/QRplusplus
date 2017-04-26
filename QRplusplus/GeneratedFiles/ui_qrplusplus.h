@@ -244,7 +244,7 @@ public:
         QRplusplusClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(QRplusplusClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 800, 21));
+        menuBar->setGeometry(QRect(0, 0, 800, 26));
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QStringLiteral("menuFile"));
         menuAbout = new QMenu(menuBar);
@@ -287,7 +287,7 @@ public:
         actionExit->setText(QApplication::translate("QRplusplusClass", "Exit", Q_NULLPTR));
         actionAbout->setText(QApplication::translate("QRplusplusClass", "About QR++", Q_NULLPTR));
         actionOpen->setText(QApplication::translate("QRplusplusClass", "Open", Q_NULLPTR));
-        actionWebsite->setText(QApplication::translate("QRplusplusClass", "Website", Q_NULLPTR));
+        actionWebsite->setText(QApplication::translate("QRplusplusClass", "Website (Coming Soon)", Q_NULLPTR));
         actionGithub->setText(QApplication::translate("QRplusplusClass", "Github", Q_NULLPTR));
         actionBrowse->setText(QApplication::translate("QRplusplusClass", "Browse...", Q_NULLPTR));
         actionGenerate_2->setText(QApplication::translate("QRplusplusClass", "Generate", Q_NULLPTR));
