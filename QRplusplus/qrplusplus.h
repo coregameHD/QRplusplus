@@ -2,7 +2,6 @@
 #define QRPLUSPLUS_H
 
 #include <QtWidgets>
-#include <string>
 #include "ui_qrplusplus.h"
 
 class QRplusplus : public QMainWindow {
@@ -13,13 +12,14 @@ public:
 	~QRplusplus();
 
 private:
+	// Default Qt ui class
 	Ui::QRplusplusClass ui;
 
 	// Member data
 	QString dir;
 	std::string fileDirectory;
 
-	// Getter functions
+	// Getter
 	std::string getColor();
 	int getBorderSize() { return ui.spinBox_borderSize->value(); }
 

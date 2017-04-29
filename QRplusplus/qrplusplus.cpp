@@ -106,7 +106,7 @@ void QRplusplus::aboutDialog() {
 /*
 * When user open a program, by default, these buttons are disabled.
 * enableButton() is a function to enable generateButton and clearButton
-if user enter any text in userTextInput textbox.
+* if user enter any text in userTextInput textbox.
 */
 void QRplusplus::enableButton() {
 	ui.generateButton->setEnabled(!(ui.userTextInput->toPlainText().isEmpty()));
@@ -234,6 +234,7 @@ void QRplusplus::initPushButton() {
 
 /*
 * Colorize each color in comboBox_color combobox.
+* First parameter represent the index of comboBox_color.
 */
 void QRplusplus::initColorComboBox() {
 	ui.comboBox_color->setItemData(1, QBrush(QColor(244, 67, 54)), Qt::TextColorRole); // Red
@@ -253,6 +254,7 @@ void QRplusplus::initColorComboBox() {
 
 /*
 * A function to initialize status bar.
+* Tooltip is a help text which tell user the function of each section of the program.
 */
 void QRplusplus::initStatusBar() {
 	// Status Bar
