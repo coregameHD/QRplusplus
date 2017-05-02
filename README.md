@@ -7,7 +7,7 @@ C++ QR Code Generator with Qt GUI
 
 A QR Code is a 2D barcode that stores information in *data pixels* or *modules*, a black or white pixel, instead of bars.
 
-Not only you can create black and white version, this program also provide an option to create a colored QR Code.
+Not only you can create black and white version, this program also provides an option to create a colored QR Code.
 
 
 ### Screenshot
