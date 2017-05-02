@@ -21,17 +21,35 @@ Not only you can create black and white version, this program also provides an o
 * Output formats: SVG XML string
 * Open source code under the permissive MIT License
 #### Additional Features (QR++)
-* Portable: no need to install on your computer
-* Lightweight: file size less than 10 MB
-* GUI: Beautiful user interface, easy to use
-* Colorful: 14 colors available (color palette from Google material design)
-* Multilanguage: Support English, Thai, and Japanese character including Kanji
+* **Portable**: no need to install on your computer
+* **Lightweight**: file size less than 10 MB
+* **GUI**: Beautiful user interface, easy to use
+* **Colorful**: 14 colors available (color palette from Google material design)
+* **Multilanguage**: Support English, Thai, and Japanese Kanji
 
 
-### Project requirements:
+### Project requirements
 *	Visual Studio 2015 with Update 3
 *	Qt 5.8 (GUI Framework)
     * Website - [https://www.qt.io/](https://www.qt.io/)
 *	Nayuki’s QR Code generator library (Third-party library)
     * Github - [https://www.github.com/nayuki/QR-Code-generator](https://www.github.com/nayuki/QR-Code-generator)
     * Website - [https://www.nayuki.io/page/qr-code-generator-library](https://www.github.com/nayuki/QR-Code-generator)
+
+### Project Files
+#### Form Files
+* qrplusplus.ui
+#### Generated Files
+* qrc_qrplusplus.cpp
+* ui_qrplusplus.h
+#### Header Files
+* BitBuffer.hpp
+* QrCode.hpp
+* `qrplusplus.h`
+* QrSegment.hpp
+#### Source Files
+* Bitbuffer.hpp
+* `main.cpp`
+* QrCode.cpp
+* `qrplusplus.cpp`
+* QrSegment.cpp
