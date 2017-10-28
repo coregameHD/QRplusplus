@@ -25,6 +25,7 @@ Not only you can create black and white version, this program also provides an o
 * **Lightweight**: file size less than 10 MB
 * **GUI**: Beautiful user interface, easy to use
 * **Colorful**: 14 colors available (color palette from Google material design)
+* **Border**: Customizable border size.
 * **Multilanguage**: Support English, Thai, and Japanese Kanji
 
 
